@@ -11,7 +11,7 @@ export default function Navbar() {
 
     useEffect(() => {
         setMounted(true);
-    }, []);
+    }, [resolvedTheme]);
 
     const handleThemeToggle = () => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
