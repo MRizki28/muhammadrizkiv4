@@ -1,4 +1,3 @@
-
 import Profile from "@/components/home/Profile";
 import Navbar from "@/components/Navbar";
 
