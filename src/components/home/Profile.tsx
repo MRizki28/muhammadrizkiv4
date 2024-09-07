@@ -59,7 +59,7 @@ export default function Profile() {
                         <ul className='flex flex-row justify-center flex-wrap ml-0'>
                             {showTech.map((item, index) => (
                                 <li key={index} className="flex  items-center justify-center last:mr-0 mr-2 mb-2">
-                                    <span className="inline-block bg-gray-200 rounded-sm px-2 py-1 text-xs font-normal last:mr-0 ">{item}</span>
+                                    <span className="inline-block bg-gray-200 dark:bg-slate-500 rounded-sm px-2 py-1 text-xs font-normal last:mr-0 ">{item}</span>
                                 </li>
                             ))}
                             <li className='flex flex-row items-center mb-2'>
