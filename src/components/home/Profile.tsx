@@ -64,7 +64,7 @@ export default function Profile() {
                             ))}
                             <li className='flex flex-row items-center mb-2'>
                                 <a href="#" onClick={handleShowMore} className='transition duration-200 ease-in-out flex flex-row items-center hover:text-red-600 text-xs font-light'>
-                                    {showMore ? '- less' : '+ more'}
+                                    {showMore ? '- less&apos;' : '+ more&apos;'}
                                 </a>
                             </li>
                         </ul>
