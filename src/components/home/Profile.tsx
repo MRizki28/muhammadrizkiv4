@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-
 'use client';
 
 import Image from 'next/image';
@@ -66,7 +64,7 @@ export default function Profile() {
                             ))}
                             <li className='flex flex-row items-center mb-2'>
                                 <a href="#" onClick={handleShowMore} className='transition duration-200 ease-in-out flex flex-row items-center hover:text-red-600 text-xs font-light'>
-                                    {showMore ? '- less' : '+ more'}
+                                    {showMore ? '-less' : '+more'}
                                 </a>
                             </li>
                         </ul>
@@ -74,7 +72,7 @@ export default function Profile() {
                 </div>
             </div>
             <div>
-                <p className="font-light max-w-screen-xl">Hey there! I'm Muhammad Rizki. I work as a full-time software engineer. In my free time I do open source. Most of my open source
+                <p className="font-light max-w-screen-xl">Hey there! I&aposm Muhammad Rizki. I work as a full-time software engineer. In my free time I do open source. Most of my open source
                     project
                     focuses on one thing – to help people learn. You can see it in my <a href="https://github.com/MRizki28?tab=repositories" className="font-bold  text-black" target="_blank" rel="noopener noreferrer">repo</a>  if you want to test and use it for your project</p>
             </div>
