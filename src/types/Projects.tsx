@@ -7,6 +7,6 @@ export interface Project {
     img: any;
     techStack: {
         name: string;
-        icon: JSX.Element;
+        icon: any;
     }[];
 }
