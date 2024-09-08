@@ -15,7 +15,7 @@ const ProjectData: Project[] = [
         techStack: [
             {
                 name: 'PHP',
-                icon: <SiPhp className='text-4xl text-[#8993be]' />
+                icon: <SiPhp style={{ fontSize: '24px', color: '#8993be' }} />
             }
         ]
     },
@@ -29,11 +29,11 @@ const ProjectData: Project[] = [
         techStack: [
             {
                 name: 'PHP',
-                icon: <SiPhp className='text-4xl text-[#8993be]' />
+                icon: <SiPhp style={{ fontSize: '24px', color: '#8993be' }} />
             },
             {
                 name: 'Laravel',
-                icon: <FaLaravel className='text-4xl text-red-700'></FaLaravel>
+                icon: <FaLaravel style={{ fontSize: '24px', color: 'red' }} />
             }
         ]
     }
