@@ -32,8 +32,8 @@ export default function Navbar() {
                         </Link>
                     </li>
                     <li className="ml-5 mb-0">
-                        <Link href="/" aria-current="page" className="transition duration-200 ease-in-out flex flex-row items-center text-black hover:text-red-600 uppercase text-xs font-bold no-underline dark:text-white dark:hover:text-red-700">
-                            Project
+                        <Link href="/projects" aria-current="page" className="transition duration-200 ease-in-out flex flex-row items-center text-black hover:text-red-600 uppercase text-xs font-bold no-underline dark:text-white dark:hover:text-red-700">
+                            Projects
                         </Link>
                     </li>
                 </ul>
