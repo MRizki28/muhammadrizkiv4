@@ -15,6 +15,7 @@ import burger from '@/assets/images/projects/burgerkapten.png';
 import homify from '@/assets/images/projects/homify.png';
 import theblue from '@/assets/images/projects/theblue.png';
 import becdex from '@/assets/images/projects/becdex.png';
+import eskincare from '@/assets/images/projects/e-skincare.png';
 
 const ProjectData: Project[] = [
     {
@@ -241,6 +242,41 @@ const ProjectData: Project[] = [
                 name: 'Codegniter',
                 icon: <DiCodeigniter style={{ fontSize: '24px', color: 'red' }} />
             }
+        ]
+    },
+    {
+        id: 10,
+        title: 'E market skincare',
+        year: '2024-07',
+        description: 'E market skincare is a marketplace platform that accommodates all registered distributors. where distributors can offer their products directly through this platform',
+        url_source_code: 'https://github.com/MRizki28/e-market-skincare',
+        url_demo: '#',
+        img:eskincare,
+        techStack: [
+            {
+                name: 'Jquery',
+                icon: <DiJqueryLogo style={{ fontSize: '24px', color: '#0769AD' }} />
+            },
+            {
+                name: 'PHP',
+                icon: <SiPhp style={{ fontSize: '24px', color: '#8993be' }} />
+            },
+            {
+                name: 'Laravel',
+                icon: <FaLaravel style={{ fontSize: '24px', color: 'red' }} />
+            },
+            {
+                name: 'ReactJs',
+                icon: <FaReact style={{ fontSize: '24px', color: '#61DAFB' }} />
+            },
+            {
+                name: 'Tailwinds',
+                icon: <RiTailwindCssFill style={{ fontSize: '24px', color: '#3B82F6' }} />
+            },
+            {
+                name: 'Javascript',
+                icon: <IoLogoJavascript style={{ fontSize: '24px', color: '#F7DF1E' }} />
+            },
         ]
     },
 
