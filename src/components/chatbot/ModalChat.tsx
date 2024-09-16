@@ -9,6 +9,7 @@ import { FaPaperPlane } from "react-icons/fa";
 
 export default function ModalChat() {
     const [openChat, setOpenChat] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     const handleOpenChat = () => {
         const floatingButton = document.getElementById('floatingButton')!;
@@ -21,6 +22,14 @@ export default function ModalChat() {
             }, 500);
         }
     }
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const closeChat = () => {
         setOpenChat(false);
@@ -48,19 +57,22 @@ export default function ModalChat() {
                         <div className="flex flex-col space-y-2" id="messageContainer">
                             {/* Bot message */}
                             <div className="flex items-start space-x-2">
-                                <div>
-                                    <Image
-                                        src={Profile}
-                                        alt="profile"
-                                        width={50}
-                                        height={50}
-                                        className="w-12 h-12 object-cover rounded-full"
-                                        placeholder="blur"
-                                        blurDataURL={Profile.blurDataURL}
-                                    />
-                                </div>
+                                {!isMobile && (
+                                    <div>
+                                        <Image
+                                            src={Profile}
+                                            alt="profile"
+                                            width={50}
+                                            height={50}
+                                            className="w-12 h-12 object-cover rounded-full"
+                                            placeholder="blur"
+                                            blurDataURL={Profile.blurDataURL}
+                                            id="profile"
+                                        />
+                                    </div>
+                                )}
                                 <div className="text-white p-2 rounded-lg max-w-xs bg-gray-600">
-                                    <span>Hello, I'm Alice. I'm a system assistant. Can I help you?</span>
+                                    <span>Hello, Im Alice. Im a system assistant. Can I help you?</span>
                                 </div>
                             </div>
 
@@ -116,8 +128,6 @@ export default function ModalChat() {
                             </div>
                         </div>
                     </div>
-
-
                     {/* Input Field */}
                     <div className="bg-white p-4 flex items-center rounded-b-lg">
                         <input
@@ -132,7 +142,7 @@ export default function ModalChat() {
                         </button>
                     </div>
                 </div>
-            </div>
+            </div >
 
             <div id="floatingButton" className={`fixed bottom-4 right-4 transition-transform duration-500 ${openChat ? 'hidden' : ''}`}>
                 <button onClick={handleOpenChat} className="bg-white text-black border-2 shadow-2xl border-black rounded-full p-4 hover:bg-blue-600 focus:outline-none">
