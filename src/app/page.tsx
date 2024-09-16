@@ -1,3 +1,4 @@
+import ModalChat from "@/components/chatbot/ModalChat";
 import Profile from "@/components/home/Profile";
 import Navbar from "@/components/Navbar";
 
@@ -8,6 +9,7 @@ export default function Home() {
       <article className="px-6 sm:px-12 py-6">
         <Profile></Profile>
       </article>
+      <ModalChat></ModalChat>
     </main>
   );
 }
