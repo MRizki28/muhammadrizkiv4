@@ -60,7 +60,7 @@ export default function ModalChat() {
                                     />
                                 </div>
                                 <div className="text-white p-2 rounded-lg max-w-xs bg-gray-600">
-                                    <span>Hello, I'm Alice. I'm a system assistant. Can I help you?</span>
+                                    <span>Hello, Im Alice. Im a system assistant. Can I help you?</span>
                                 </div>
                             </div>
 
