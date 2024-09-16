@@ -9,7 +9,7 @@ import { FaPaperPlane } from "react-icons/fa";
 
 export default function ModalChat() {
     const [openChat, setOpenChat] = useState(false);
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(false);
 
     const handleOpenChat = () => {
         const floatingButton = document.getElementById('floatingButton')!;
@@ -27,6 +27,8 @@ export default function ModalChat() {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
         };
+
+        handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
