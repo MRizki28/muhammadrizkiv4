@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import Profile from "@/assets/profile.png";
+import Profile from "@/assets/alice.webp";
 import { IoMdClose } from "react-icons/io";
 import { useState, useEffect } from "react";
 import { TbMessageChatbot } from "react-icons/tb";
@@ -78,7 +78,6 @@ export default function ModalChat() {
     }
 
 
-
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
@@ -99,9 +98,9 @@ export default function ModalChat() {
                 id="modalChat"
                 className={`fixed p-1 right-[6px] md:right-4 bottom-10 ${openChat ? 'fade-in h-[100%] top-[3px] md:top-auto md:h-fit' : 'hidden'}`}
             >
-                <div className="bg-gray-100 rounded-lg shadow-lg flex flex-col max-h-[600px] h-full ">
+                <div className="bg-gray-100 dark:bg-slate-800 rounded-lg shadow-lg flex flex-col max-h-[600px] h-full ">
                     {/* Header */}
-                    <div className="bg-black p-4 text-white flex justify-between items-center rounded-t-lg">
+                    <div className="bg-black dark:bg-slate-700 p-4 text-white flex justify-between items-center rounded-t-lg">
                         <span className="text-start" id="receiver">Chat</span>
                         <div className="relative inline-block text-left">
                             <button className="hover:bg-gray-700 rounded-md p-1" onClick={closeChat}>
@@ -114,7 +113,7 @@ export default function ModalChat() {
                     <div className="flex-1 overflow-y-auto p-4">
                         <div className="flex flex-col space-y-2" id="messageContainer">
                             {messages.map((message, index) => (
-                                <div key={index} className={`flex ${message.type === 'bot' ? 'items-start' : 'justify-end'}`}>
+                                <div key={index} className={`flex space-x-3 ${message.type === 'bot' ? 'items-start' : 'justify-end'}`}>
                                     {message.type === 'bot' && !isMobile &&   (
                                         <div>
                                             <Image
@@ -136,12 +135,12 @@ export default function ModalChat() {
                         </div>
                     </div>
                     {/* Input Field */}
-                    <div className="bg-white p-4 flex items-center rounded-b-lg">
+                    <div className="bg-white dark:bg-slate-700 p-4 flex items-center rounded-b-lg">
                         <input
                             type="text"
                             id="messageInput"
                             placeholder="Maintenance"
-                            className="flex-1 border rounded-full px-4 py-2 focus:outline-none"
+                            className="flex-1 border rounded-full px-4 py-2 focus:outline-none dark:bg-slate-700"
                             onChange={(e) => setInputValue(e.target.value)}
                         />
                         <button onClick={handleSendMessage} className="bg-black text-white rounded-full p-2 ml-2 hover:bg-gray-800 focus:outline-none">
