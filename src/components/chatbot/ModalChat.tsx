@@ -127,7 +127,7 @@ export default function ModalChat() {
                                             />
                                         </div>
                                     )}
-                                    <div className={`text-white p-2 rounded-lg max-w-xs ${message.type === 'bot' ? 'bg-gray-600' : 'bg-green-200'}`}>
+                                    <div className={`text-white p-2 rounded-lg max-w-xs ${message.type === 'bot' ? 'bg-gray-600' : 'bg-green-600'}`}>
                                         <span>{message.message}</span>
                                     </div>
                                 </div>
