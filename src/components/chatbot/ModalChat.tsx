@@ -10,6 +10,20 @@ import { FaPaperPlane } from "react-icons/fa";
 export default function ModalChat() {
     const [openChat, setOpenChat] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+    const [messages, setMessages] = useState([
+        {
+            id: 1,
+            type: 'bot',
+            message: 'Hello, Im Alice. How can I assist you today ?'
+        },
+        {
+            id: 2,
+            type: 'bot',
+            message: 'You can type 1 for information about Muhammad Rizki or 2 for information about my projects'
+        }
+
+    ]);
 
     const handleOpenChat = () => {
         const floatingButton = document.getElementById('floatingButton')!;
@@ -22,6 +36,48 @@ export default function ModalChat() {
             }, 500);
         }
     }
+
+    const handleSendMessage = () => {
+        if (inputValue.trim()) {
+            setMessages(prevMessage => [
+                ...prevMessage,
+                {
+                    id: prevMessage.length + 1,
+                    type: 'user',
+                    message: inputValue
+                }
+            ]);
+
+            processInput(inputValue);
+            setInputValue('');
+        }
+    }
+
+    const processInput = (input: string) => {
+        let response = '';
+        switch (input.trim()) {
+            case '1':
+                response = 'You chose option 1, here is the information about Muhammad Rizki';
+                break;
+            case '2':
+                response = 'You chose option 2, here is the information about my projects';
+                break;
+            default:
+                response = 'Sorry, I dont understand that command';
+                break;
+        }
+
+        setMessages(prevMessage => [
+            ...prevMessage,
+            {
+                id: prevMessage.length + 1,
+                type: 'bot',
+                message: response
+            }
+        ]);
+    }
+
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -43,7 +99,7 @@ export default function ModalChat() {
                 id="modalChat"
                 className={`fixed p-1 right-[6px] md:right-4 bottom-10 ${openChat ? 'fade-in h-[100%] top-[3px] md:top-auto md:h-fit' : 'hidden'}`}
             >
-                <div className="bg-gray-100 rounded-lg shadow-lg flex flex-col max-h-full h-full ">
+                <div className="bg-gray-100 rounded-lg shadow-lg flex flex-col max-h-[600px] h-full ">
                     {/* Header */}
                     <div className="bg-black p-4 text-white flex justify-between items-center rounded-t-lg">
                         <span className="text-start" id="receiver">Chat</span>
@@ -57,77 +113,26 @@ export default function ModalChat() {
                     {/* Chat Container */}
                     <div className="flex-1 overflow-y-auto p-4">
                         <div className="flex flex-col space-y-2" id="messageContainer">
-                            {/* Bot message */}
-                            <div className="flex items-start space-x-2">
-                                {!isMobile && (
-                                    <div>
-                                        <Image
-                                            src={Profile}
-                                            alt="profile"
-                                            width={50}
-                                            height={50}
-                                            className="w-12 h-12 object-cover rounded-full"
-                                            placeholder="blur"
-                                            blurDataURL={Profile.blurDataURL}
-                                            id="profile"
-                                        />
+                            {messages.map((message, index) => (
+                                <div key={index} className={`flex ${message.type === 'bot' ? 'items-start' : 'justify-end'}`}>
+                                    {message.type === 'bot' && !isMobile &&   (
+                                        <div>
+                                            <Image
+                                                src={Profile}
+                                                alt="profile"
+                                                width={50}
+                                                height={50}
+                                                className="w-12 h-12 object-cover rounded-full"
+                                                placeholder="blur"
+                                                blurDataURL={Profile.blurDataURL}
+                                            />
+                                        </div>
+                                    )}
+                                    <div className={`text-white p-2 rounded-lg max-w-xs ${message.type === 'bot' ? 'bg-gray-600' : 'bg-green-200'}`}>
+                                        <span>{message.message}</span>
                                     </div>
-                                )}
-                                <div className="text-white p-2 rounded-lg max-w-xs bg-gray-600">
-                                    <span>Hello, Im Alice. Im a system assistant. Can I help you?</span>
                                 </div>
-                            </div>
-
-                            {/* User response */}
-                            <div className="flex justify-end">
-                                <div className="text-black p-2 rounded-lg max-w-xs bg-green-200">
-                                    <span>Yes</span>
-                                </div>
-                            </div>
-
-                            {/* Bot options */}
-                            <div className="flex items-start space-x-2">
-                                <div>
-                                    <Image
-                                        src={Profile}
-                                        alt="profile"
-                                        width={50}
-                                        height={50}
-                                        className="w-12 h-12 object-cover rounded-full"
-                                        placeholder="blur"
-                                        blurDataURL={Profile.blurDataURL}
-                                    />
-                                </div>
-                                <div className="text-white p-2 rounded-lg max-w-xs bg-gray-600">
-                                    <span>Please select an option:</span>
-                                    <p>1. About Muhammad Rizki</p>
-                                </div>
-                            </div>
-
-                            {/* User selects option */}
-                            <div className="flex justify-end">
-                                <div className="text-black p-2 rounded-lg max-w-xs bg-green-200">
-                                    <span>1</span>
-                                </div>
-                            </div>
-
-                            {/* Bot responds */}
-                            <div className="flex items-start space-x-2">
-                                <div>
-                                    <Image
-                                        src={Profile}
-                                        alt="profile"
-                                        width={50}
-                                        height={50}
-                                        className="w-12 h-12 object-cover rounded-full"
-                                        placeholder="blur"
-                                        blurDataURL={Profile.blurDataURL}
-                                    />
-                                </div>
-                                <div className="text-white p-2 rounded-lg max-w-xs bg-gray-600">
-                                    <span>Muhammad Rizki is a software engineer from Indonesia, with 2 years of experience in web development.</span>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                     {/* Input Field */}
@@ -137,9 +142,9 @@ export default function ModalChat() {
                             id="messageInput"
                             placeholder="Maintenance"
                             className="flex-1 border rounded-full px-4 py-2 focus:outline-none"
-                            disabled
+                            onChange={(e) => setInputValue(e.target.value)}
                         />
-                        <button disabled className="bg-black text-white rounded-full p-2 ml-2 hover:bg-gray-800 focus:outline-none">
+                        <button onClick={handleSendMessage} className="bg-black text-white rounded-full p-2 ml-2 hover:bg-gray-800 focus:outline-none">
                             <FaPaperPlane />
                         </button>
                     </div>
