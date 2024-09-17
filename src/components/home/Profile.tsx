@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import rizkiProfile from '@/assets/rizki3.png';
+import rizkiProfile from '@/assets/rizki2.jpeg';
 import { useState } from 'react';
 import Techdata from '@/data/TechData';
 
