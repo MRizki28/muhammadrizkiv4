@@ -72,9 +72,23 @@ export default function ModalChat() {
             {
                 id: prevMessage.length + 1,
                 type: 'bot',
-                message: response
+                message: 'Alice is typing...'
             }
         ]);
+
+        setTimeout(() => {
+            setMessages(prevMessage => {
+                const updatedMessages = prevMessage.slice(0, -1);
+                return [
+                    ...updatedMessages,
+                    {
+                        id: updatedMessages.length + 1,
+                        type: 'bot',
+                        message: response
+                    }
+                ];
+            });
+        }, 3000);
     }
 
 
@@ -114,7 +128,7 @@ export default function ModalChat() {
                         <div className="flex flex-col space-y-2" id="messageContainer">
                             {messages.map((message, index) => (
                                 <div key={index} className={`flex space-x-3 ${message.type === 'bot' ? 'items-start' : 'justify-end'}`}>
-                                    {message.type === 'bot' && !isMobile &&   (
+                                    {message.type === 'bot' && !isMobile && (
                                         <div>
                                             <Image
                                                 src={Profile}
@@ -127,7 +141,7 @@ export default function ModalChat() {
                                             />
                                         </div>
                                     )}
-                                    <div className={`text-white p-2 rounded-lg max-w-xs ${message.type === 'bot' ? 'bg-gray-600' : 'bg-green-600'}`}>
+                                    <div className={`text-white p-2 rounded-lg max-w-xs ${message.type === 'bot' ? 'bg-gray-600' : 'bg-green-600' }`}>
                                         <span>{message.message}</span>
                                     </div>
                                 </div>
