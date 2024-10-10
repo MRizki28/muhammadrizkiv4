@@ -50,6 +50,10 @@ export default function ModalChat() {
 
             processInput(inputValue);
             setInputValue('');
+            const messageInput = document.getElementById('messageInput') as HTMLInputElement | null;
+            if (messageInput) {
+                messageInput.value = '';
+            }
         }
     }
 
