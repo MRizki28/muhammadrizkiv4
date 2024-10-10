@@ -22,7 +22,6 @@ export default function ModalChat() {
             type: 'bot',
             message: 'You can type 1 for information about Muhammad Rizki or 2 for information about my projects'
         }
-
     ]);
 
     const handleOpenChat = () => {
@@ -37,7 +36,15 @@ export default function ModalChat() {
         }
     }
 
+    const handleKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        console.log('here');
+        if (e.key === 'Enter') {
+            handleSendMessage();
+        }
+    }
+
     const handleSendMessage = () => {
+
         if (inputValue.trim()) {
             setMessages(prevMessage => [
                 ...prevMessage,
@@ -57,6 +64,13 @@ export default function ModalChat() {
         }
     }
 
+    const responseNotFound = [
+        'Sorry, I dont understand that command',
+        'I dont know what you mean',
+        'I dont have that information',
+        'I dont have that command'
+    ]
+
     const processInput = (input: string) => {
         let response = '';
         switch (input.trim()) {
@@ -67,7 +81,7 @@ export default function ModalChat() {
                 response = 'You chose option 2, here is the information about my projects';
                 break;
             default:
-                response = 'Sorry, I dont understand that command';
+                response = responseNotFound[Math.floor(Math.random() * responseNotFound.length)];
                 break;
         }
 
@@ -145,7 +159,7 @@ export default function ModalChat() {
                                             />
                                         </div>
                                     )}
-                                    <div className={`text-white p-2 rounded-lg max-w-xs ${message.type === 'bot' ? 'bg-gray-600' : 'bg-green-600' }`}>
+                                    <div className={`text-white p-2 rounded-lg max-w-xs ${message.type === 'bot' ? 'bg-gray-600' : 'bg-green-600'}`}>
                                         <span>{message.message}</span>
                                     </div>
                                 </div>
@@ -159,7 +173,9 @@ export default function ModalChat() {
                             id="messageInput"
                             placeholder="Maintenance"
                             className="flex-1 border rounded-full px-4 py-2 focus:outline-none dark:bg-slate-700"
-                            onChange={(e) => setInputValue(e.target.value)}
+                            onChange={(e) => setInputValue(e.target.value)
+                            }
+                            onKeyDown={handleKeyEnter}
                         />
                         <button onClick={handleSendMessage} className="bg-black text-white rounded-full p-2 ml-2 hover:bg-gray-800 focus:outline-none">
                             <FaPaperPlane />
