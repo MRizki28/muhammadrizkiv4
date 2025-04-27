@@ -6,6 +6,8 @@ const Techdata = [
     'Go',
     'NestJs',
     'ExpressJs',
+    'JavaScript',
+    'TypeScript',
 ]
 
 export default Techdata;    
