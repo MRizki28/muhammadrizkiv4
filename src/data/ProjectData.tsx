@@ -16,6 +16,8 @@ import homify from '@/assets/images/projects/homify.png';
 import theblue from '@/assets/images/projects/theblue.png';
 import becdex from '@/assets/images/projects/becdex.png';
 import eskincare from '@/assets/images/projects/e-skincare.png';
+import bpr from '@/assets/images/projects/bpr.png';
+import portal from '@/assets/images/projects/portal.png';
 
 const ProjectData: Project[] = [
     {
@@ -272,6 +274,72 @@ const ProjectData: Project[] = [
             {
                 name: 'Tailwinds',
                 icon: <RiTailwindCssFill style={{ fontSize: '24px', color: '#3B82F6' }} />
+            },
+            {
+                name: 'Javascript',
+                icon: <IoLogoJavascript style={{ fontSize: '24px', color: '#F7DF1E' }} />
+            },
+        ]
+    },
+    {
+        id: 11,
+        title: 'BPR Palu Anugerah Company Profile',
+        year: '2025-02',
+        description: 'Company profile website for BPR Palu Anugerah, a bank in Palu City, Central Sulawesi',
+        url_source_code: '#',
+        url_demo: 'https://bprpaluanugerah.co.id',
+        img:bpr,
+        techStack: [
+            {
+                name: 'Jquery',
+                icon: <DiJqueryLogo style={{ fontSize: '24px', color: '#0769AD' }} />
+            },
+            {
+                name: 'PHP',
+                icon: <SiPhp style={{ fontSize: '24px', color: '#8993be' }} />
+            },
+            {
+                name: 'Laravel',
+                icon: <FaLaravel style={{ fontSize: '24px', color: 'red' }} />
+            },
+            {
+                name: 'ReactJs',
+                icon: <FaReact style={{ fontSize: '24px', color: '#61DAFB' }} />
+            },
+            {
+                name: 'Tailwinds',
+                icon: <RiTailwindCssFill style={{ fontSize: '24px', color: '#3B82F6' }} />
+            },
+            {
+                name: 'Javascript',
+                icon: <IoLogoJavascript style={{ fontSize: '24px', color: '#F7DF1E' }} />
+            },
+            {
+                name: 'Typescript',
+                icon: <SiTypescript style={{ fontSize: '24px', color: '#3B82F6' }} />
+            }
+        ]
+    },
+    {
+        id: 12,
+        title: 'Portal BPR Palu Anugerah',
+        year: '2025-03',
+        description: 'Portal BPR Palu Anugerah is a portal for BPR Palu Anugerah, a bank in Palu City, Central Sulawesi',
+        url_source_code: '#',
+        url_demo: '#',
+        img:portal,
+        techStack: [
+            {
+                name: 'Jquery',
+                icon: <DiJqueryLogo style={{ fontSize: '24px', color: '#0769AD' }} />
+            },
+            {
+                name: 'PHP',
+                icon: <SiPhp style={{ fontSize: '24px', color: '#8993be' }} />
+            },
+            {
+                name: 'Laravel',
+                icon: <FaLaravel style={{ fontSize: '24px', color: 'red' }} />
             },
             {
                 name: 'Javascript',
