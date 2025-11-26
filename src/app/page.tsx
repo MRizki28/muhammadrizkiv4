@@ -1,4 +1,5 @@
 import ModalChat from "@/components/chatbot/ModalChat";
+import Footer from "@/components/Footer";
 import ProfileClient from "@/components/home/ProfileClient";
 import Navbar from "@/components/Navbar";
 
@@ -12,6 +13,8 @@ export default function Home() {
         <ProfileClient></ProfileClient>
       </article>
       <ModalChat></ModalChat>
+      <Footer></Footer>
     </main>
+
   );
 }

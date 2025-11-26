@@ -34,11 +34,9 @@ export default function ProfileClient() {
                 </div>
                 <div className='flex flex-col justify-center items-center sm:items-start'>
                     <div>
-                        <div className='md:ml-0 text-center'>
-                            <h1 className="text-3xl mb-1 uppercase font-extrabold">
-                                Muhammad Rizki
-                            </h1>
-                        </div>
+                        <h1 className="text-3xl mb-1 uppercase font-extrabold">
+                            Muhammad Rizki
+                        </h1>
                         <div className="mb-3 text-center font-light text-gray-500 flex flex-row items-center justify-center md:flex md:justify-start">
                             <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" className="mr-1 w-4 h-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                             <span>Software Engineer</span>
@@ -87,9 +85,10 @@ export default function ProfileClient() {
                 </div>
             </div>
             <div>
-                <p className="font-light max-w-screen-xl">Hey there! I&apos;m Muhammad Rizki. I work as a full-time software engineer. In my free time I do open source. Most of my open source
-                    project
-                    focuses on one thing – to help people learn. You can see it in my <a href="https://github.com/MRizki28?tab=repositories" className="font-bold  text-black dark:text-white" target="_blank" rel="noopener noreferrer">repo</a>  if you want to test and use it for your project</p>
+                <p className="font-light max-w-screen-xl">
+                    Hey there! I&apos;m Muhammad Rizki. I currently work as a software engineer at BPR Palu Anugerah. In my free time, I contribute to open source projects. Most of my open source work focuses on one goal – helping people learn. You can check out my <a href="https://github.com/MRizki28?tab=repositories" className="font-bold text-black dark:text-white" target="_blank" rel="noopener noreferrer">repositories</a> if you want to explore or use them in your own projects.
+                </p>
+
             </div>
         </>
 
