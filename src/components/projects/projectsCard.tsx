@@ -1,31 +1,18 @@
-'use client';
 import Image from "next/image";
 import { SlCalender } from "react-icons/sl";
-import ProjectData from "@/data/ProjectData";
 import helper from "@/helper/helper";
-import { useEffect, useState } from "react";
-import { Project } from "@/types/Projects";
 import { FaPlay } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import ProjectData from "@/data/ProjectData";
 
 export default function ProjectsCard() {
-    const [result, setResult] = useState<Project[]>([]);
-    const getData = () => {
-        const data = ProjectData;
-        const sortByNewData = data.sort((a, b) => {
-            return new Date(b.year).getTime() - new Date(a.year).getTime();
-        })
-
-        setResult(sortByNewData);
-    }
-    useEffect(() => {
-        getData();
-    }, [])
+    const projectData = ProjectData;
+    const sortedProjects = [...projectData].sort((a, b) => new Date(b.year).getTime() - new Date(a.year).getTime());
 
     return (
         <div>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-                {result.map((project, index) => (
+                {sortedProjects.map((project, index) => (
                     <div key={index} className="border rounded-lg flex flex-col justify-between dark:border-gray-600">
                         <div className="overflow-hidden rounded-tl-lg rounded-tr-lg">
                             <Image src={project.img} alt={project.title} width={640} height={500} className="w-full h-60 object-cover object-top border-b-2" placeholder="blur"

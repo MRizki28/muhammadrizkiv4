@@ -1,23 +1,17 @@
 'use client';
 
 import Image from 'next/image';
-import rizkiProfile from '@/assets/rizki2.jpeg';
+import rizkiProfile from '@/assets/profile1.webp';
 import { useState } from 'react';
 import Techdata from '@/data/TechData';
 
-export default function Profile() {
-    const techData = Techdata;
-
+export default function ProfileClient() {
     const [showMore, setShowMore] = useState(false);
-    const [showTech, setShowTech] = useState(techData.slice(0, 3));
+
+    const visibleTech = showMore ? Techdata : Techdata.slice(0, 3);
 
     const handleShowMore = () => {
         setShowMore(!showMore);
-        if (showMore) {
-            setShowTech(techData.slice(0, 3));
-        } else {
-            setShowTech(techData);
-        }
     }
 
     return (
@@ -32,7 +26,9 @@ export default function Profile() {
                             height={1080}
                             placeholder="blur"
                             blurDataURL={rizkiProfile.blurDataURL}
-                            className="object-cover object-center sm:rounded-lg"
+                            priority={true}
+                            fetchPriority='high'
+                            className="object-cover object-center sm:rounded-lg " style={{ height: '-webkit-fill-available' }}
                         />
                     </div>
                 </div>
@@ -57,7 +53,7 @@ export default function Profile() {
                     </div>
                     <div>
                         <ul className='flex flex-row justify-center flex-wrap ml-0'>
-                            {showTech.map((item, index) => (
+                            {visibleTech.map((item, index) => (
                                 <li key={index} className="flex  items-center justify-center last:mr-0 mr-2 mb-2">
                                     <span className="inline-block bg-gray-200 dark:bg-slate-500 rounded-sm px-2 py-1 text-xs font-normal last:mr-0 ">{item}</span>
                                 </li>
