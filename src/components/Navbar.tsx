@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { MdDarkMode, MdSunny } from 'react-icons/md';
 import logo from '@/assets/icon.png';
 import logo2 from '@/assets/white.png'
+import { IoMoonOutline } from 'react-icons/io5';
 
 export default function Navbar() {
     const { setTheme, resolvedTheme } = useTheme();
@@ -24,7 +25,7 @@ export default function Navbar() {
     const renderThemeIcon = () => {
         if (!mounted) return <MdSunny className="text-gray-700 text-3xl cursor-pointer" />;
         return resolvedTheme === 'dark' ? (
-            <MdDarkMode
+            <IoMoonOutline
                 onClick={handleThemeToggle}
                 className="text-3xl cursor-pointer text-white transition-colors duration-200"
             />

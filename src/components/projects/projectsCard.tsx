@@ -11,6 +11,10 @@ export default function ProjectsCard() {
 
     return (
         <div>
+            <div className="flex flex-row items-center space-x-2 mb-5">
+                <h2 className="text-3xl font-extrabold uppercase">Projects</h2>
+                <span className="border rounded px-1 ml-3  text-xs align-text-top dark:text-white bg-gray-200 dark:bg-gray-600 self-start">{sortedProjects.length}</span>
+            </div>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
                 {sortedProjects.map((project, index) => (
                     <div key={index} className="border rounded-lg flex flex-col justify-between dark:border-gray-600">
