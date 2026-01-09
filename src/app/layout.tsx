@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import localFont from "next/font/local"
 
-const inter = Inter({ subsets: ["latin"], preload: true });
+// const inter = Inter({ subsets: ["latin"], preload: true });
+const roboto = localFont({ src: "../assets/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf" })
 
 export const metadata: Metadata = {
   title: "Muhammad Rizki",
@@ -21,9 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/globals.css" as="style" />
       </head>
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <Providers>{children}</Providers>
       </body>
     </html>
