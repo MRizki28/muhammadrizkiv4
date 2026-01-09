@@ -1,12 +1,16 @@
 'use client';
 
 import { useTheme } from 'next-themes';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { MdDarkMode, MdSunny } from 'react-icons/md';
+import logo from '@/assets/icon.png';
+import logo2 from '@/assets/white.png'
 
 export default function Navbar() {
     const { setTheme, resolvedTheme } = useTheme();
+    const { theme } = useTheme()
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -33,19 +37,25 @@ export default function Navbar() {
     };
 
     return (
-        <header className="flex flex-row items-center px-6 sm:px-12 py-6 font-sans bg-white dark:bg-gray-800 ">
-            <div className="mr-6 mb-[2px]">
+        <header className="grid grid-cols-3 px-6 sm:px-12 py-6 font-sans bg-white dark:bg-gray-800 border-b-2 border-gray-200 dark:border-gray-700">
+            <div className="mb-[2px] ">
                 <Link
                     href="/"
                     aria-current="page"
                     className="transition text-black duration-200 ease-in-out flex flex-row items-center hover:text-red-700 font-extrabold text-sm no-underline tracking-widest uppercase dark:text-white dark:hover:text-red-700"
                 >
-                    MRizki
+                    <Image
+                        src={theme === 'dark' ? logo2 : logo}
+                        alt="Logo"
+                        width={32}
+                        height={32}
+                        className="text-center dark:text-white"
+                    />
                 </Link>
             </div>
 
-            <nav className="flex flex-grow items-center">
-                <ul className="flex items-center m-0">
+            <nav className="flex items-center justify-center">
+                <ul className="flex items-center justify-center ">
                     <li className="ml-5 mb-0">
                         <Link
                             href="/"
@@ -64,8 +74,9 @@ export default function Navbar() {
                     </li>
                 </ul>
 
-                <div className="ml-auto">{renderThemeIcon()}</div>
             </nav>
+            <div className="ml-auto">{renderThemeIcon()}</div>
+
         </header>
     );
 }

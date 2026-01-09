@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ["latin"], preload: true });
 export const metadata: Metadata = {
   title: "Muhammad Rizki",
   description: "Muhammad Rizki's personal website",
+  icons: {
+    icon: "favicon.png",
+  }
 };
 
 export default function RootLayout({
