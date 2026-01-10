@@ -5,7 +5,6 @@ import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
 import { getRequestConfig } from "@/i18n/request"; // named import
 
-
 const roboto = localFont({
   src: "../../assets/fonts/Roboto/Roboto-VariableFont_wdth,wght.ttf",
 });
@@ -18,19 +17,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default (async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // langsung ambil locale
-  const localePromise = Promise.resolve(params); // buat jadi Promise
+  const localePromise = Promise.resolve(params);
   const { locale } = await localePromise;
 
   console.log("Locale:", locale);
-
 
   const requestConfig = await getRequestConfig({ locale });
 
@@ -47,4 +44,4 @@ export default async function RootLayout({
       </body>
     </html>
   );
-}
+}) as unknown as React.ComponentType<any>; 
