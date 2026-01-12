@@ -4,10 +4,11 @@ import Image from 'next/image';
 import rizkiProfile from '@/assets/profile1.webp';
 import { useState } from 'react';
 import Techdata from '@/data/TechData';
+import { useTranslations } from 'next-intl';
 
 export default function ProfileClient() {
     const [showMore, setShowMore] = useState(false);
-
+    const t = useTranslations('home');
     const visibleTech = showMore ? Techdata : Techdata.slice(0, 3);
 
     const handleShowMore = () => {
@@ -86,7 +87,11 @@ export default function ProfileClient() {
             </div>
             <div>
                 <p className="font-light max-w-screen-xl">
-                    Hey there! I&apos;m Muhammad Rizki. I currently work as a software engineer at BPR Palu Anugerah. In my free time, I contribute to open source projects. Most of my open source work focuses on one goal – helping people learn. You can check out my <a href="https://github.com/MRizki28?tab=repositories" className="font-bold text-black dark:text-white" target="_blank" rel="noopener noreferrer">repositories</a> if you want to explore or use them in your own projects.
+                    {t('aboutMe')}
+                    <a href={t('repoLink')} className='font-bold underline' target="_blank" rel="noopener noreferrer">
+                        {t('repoLinkText')}
+                    </a>
+                    {t('aboutMeSuffix')}
                 </p>
 
             </div>

@@ -17,16 +17,14 @@ export default function Navbar() {
     const [showLanguage, setShowLanguage] = useState(false);
 
     const t = useTranslations('nav');
-    const locale = useLocale();           // current locale ('en' | 'id')
+    const locale = useLocale();     
     const router = useRouter();
     const pathname = usePathname();
 
-    // ⚡ mounted untuk theme toggle
     useEffect(() => {
         setMounted(true);
     }, []);
 
-    // 🌙 theme toggle
     const handleThemeToggle = () => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
     };
@@ -46,9 +44,7 @@ export default function Navbar() {
         );
     };
 
-    // 🌐 language switch
     const handleLanguageClick = (lang: 'en' | 'id') => {
-        // hapus prefix locale saat ini
         const pathWithoutLocale = pathname.replace(/^\/(en|id)/, '') || '/';
         const newPath = `/${lang}${pathWithoutLocale}`;
         router.push(newPath);
@@ -57,10 +53,9 @@ export default function Navbar() {
 
     return (
         <header className="grid grid-cols-3 px-6 sm:px-12 py-6 font-sans bg-white dark:bg-gray-800 border-b-2 border-gray-200 dark:border-gray-700">
-            {/* Logo */}
             <div className="mb-[2px]">
                 <Link
-                    href={`/${locale}/`} // gunakan locale
+                    href={`/${locale}/`} 
                     aria-current="page"
                     className="transition text-black duration-200 ease-in-out flex flex-row items-center hover:text-red-700 font-extrabold text-sm no-underline tracking-widest uppercase dark:text-white dark:hover:text-red-700"
                 >
@@ -74,12 +69,11 @@ export default function Navbar() {
                 </Link>
             </div>
 
-            {/* Navigation Links */}
             <nav className="flex items-center justify-center">
                 <ul className="flex items-center justify-center">
                     <li className="ml-5 mb-0">
                         <Link
-                            href={`/${locale}/`} // pake locale
+                            href={`/${locale}/`} 
                             className="transition duration-200 ease-in-out flex flex-row items-center text-black hover:text-red-600 uppercase text-xs font-bold no-underline dark:text-white dark:hover:text-red-700"
                         >
                             {t('about')}
@@ -87,18 +81,16 @@ export default function Navbar() {
                     </li>
                     <li className="ml-5 mb-0">
                         <Link
-                            href={`/${locale}/projects`} // pake locale
+                            href={`/${locale}/projects`} 
                             className="transition duration-200 ease-in-out flex flex-row items-center text-black hover:text-red-600 uppercase text-xs font-bold no-underline dark:text-white dark:hover:text-red-700"
                         >
-                            Projects
+                            {t('projects')}
                         </Link>
                     </li>
                 </ul>
             </nav>
 
-            {/* Right controls: Language + Theme */}
             <div className="ml-auto flex items-center space-x-4 relative">
-                {/* Language toggle */}
                 <IoLanguage
                     size={24}
                     className="cursor-pointer text-black dark:text-white hover:text-red-600 dark:hover:text-red-700 transition-colors"
@@ -124,7 +116,6 @@ export default function Navbar() {
                     </ul>
                 )}
 
-                {/* Theme toggle */}
                 {renderThemeIcon()}
             </div>
         </header>

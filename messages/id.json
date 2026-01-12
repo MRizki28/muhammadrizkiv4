@@ -1,5 +1,12 @@
 {
     "nav": {
-        "about": "Tentang"
+        "about": "Tentang",
+        "projects": "Proyek"
+    },
+    "home": {
+        "aboutMe": "Halo semua! Saya Muhammad Rizki. Saya bekerja sebagai Insiyur perangkat lunak di BANK BPR Palu Anugerah. Di waktu luang, saya sering melakukan kontribusi ke proyek open source, dimana fokus saya untuk membantu orang-orang untuk belajar. Kamu bisa check repository saya ",
+        "repoLinkText": "di sini",
+        "repoLink": "https://github.com/MRizki28?tab=repositories",
+        "aboutMeSuffix": " jika anda ingin melihat ataupun menggunakan untuk proyek anda."
     }
 }

@@ -1,5 +1,12 @@
 {
     "nav": {
-        "about": "About"
+        "about": "About",
+        "projects": "Projects"
+    },
+    "home": {
+        "aboutMe": "Hey there! I&apos;m Muhammad Rizki. I currently work as a software engineer at BPR Palu Anugerah. In my free time, I contribute to open source projects. Most of my open source work focuses on one goal – helping people learn. You can check out my repositories ",
+        "repoLinkText": "here",
+        "repoLink": "https://github.com/MRizki28?tab=repositories",
+        "aboutMeSuffix": " if you want to explore or use them in your own projects."
     }
 }
