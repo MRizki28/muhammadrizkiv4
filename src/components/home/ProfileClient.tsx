@@ -5,6 +5,8 @@ import rizkiProfile from '@/assets/profile1.webp';
 import { useState } from 'react';
 import Techdata from '@/data/TechData';
 import { useTranslations } from 'next-intl';
+import geminiHandler from '@/services/gemini';
+import huggingApiHandler from '@/services/huggingApi';
 
 export default function ProfileClient() {
     const [showMore, setShowMore] = useState(false);
@@ -13,6 +15,11 @@ export default function ProfileClient() {
 
     const handleShowMore = () => {
         setShowMore(!showMore);
+    }
+
+    const testingAi = async () => {
+        const response = await huggingApiHandler("siapakah anda?");
+        console.log('RESPONSE AI: ',response);
     }
 
     return (

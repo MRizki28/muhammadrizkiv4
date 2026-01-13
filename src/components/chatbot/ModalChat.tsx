@@ -6,6 +6,7 @@ import { IoMdClose } from "react-icons/io";
 import { useState, useEffect } from "react";
 import { TbMessageChatbot } from "react-icons/tb";
 import { FaPaperPlane } from "react-icons/fa";
+import huggingApiHandler from "@/services/huggingApi";
 
 export default function ModalChat() {
     const [openChat, setOpenChat] = useState(false);
@@ -15,12 +16,7 @@ export default function ModalChat() {
         {
             id: 1,
             type: 'bot',
-            message: 'Hello, Im Alice. How can I assist you today ?'
-        },
-        {
-            id: 2,
-            type: 'bot',
-            message: 'You can type 1 for information about Muhammad Rizki or 2 for information about my projects'
+            message: 'Hallo,Perkenalkan saya Alice , Assisten pribadi Muhammad Rizki. Bagaimana saya bisa membantu Anda hari ini ?'
         }
     ]);
 
@@ -37,7 +33,6 @@ export default function ModalChat() {
     }
 
     const handleKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        console.log('here');
         if (e.key === 'Enter') {
             handleSendMessage();
         }
@@ -55,6 +50,8 @@ export default function ModalChat() {
                 }
             ]);
 
+            console.log('disini', inputValue);
+
             processInput(inputValue);
             setInputValue('');
             const messageInput = document.getElementById('messageInput') as HTMLInputElement | null;
@@ -64,26 +61,9 @@ export default function ModalChat() {
         }
     }
 
-    const responseNotFound = [
-        'Sorry, I dont understand that command',
-        'I dont know what you mean',
-        'I dont have that information',
-        'I dont have that command'
-    ]
 
-    const processInput = (input: string) => {
+    const processInput = async (input: string) => {
         let response = '';
-        switch (input.trim()) {
-            case '1':
-                response = 'You chose option 1, here is the information about Muhammad Rizki';
-                break;
-            case '2':
-                response = 'You chose option 2, here is the information about my projects';
-                break;
-            default:
-                response = responseNotFound[Math.floor(Math.random() * responseNotFound.length)];
-                break;
-        }
 
         setMessages(prevMessage => [
             ...prevMessage,
@@ -94,19 +74,21 @@ export default function ModalChat() {
             }
         ]);
 
+        const result = await huggingApiHandler(input)
+
         setTimeout(() => {
-            setMessages(prevMessage => {
+            setMessages((prevMessage: any) => {
                 const updatedMessages = prevMessage.slice(0, -1);
                 return [
                     ...updatedMessages,
-                    {
+                    {   
                         id: updatedMessages.length + 1,
                         type: 'bot',
-                        message: response
+                        message: result
                     }
                 ];
             });
-        }, 3000);
+        }, 1000);
     }
 
 
@@ -133,7 +115,7 @@ export default function ModalChat() {
                 <div className="bg-gray-100 dark:bg-slate-800 rounded-lg shadow-lg flex flex-col max-h-[600px] h-full ">
                     {/* Header */}
                     <div className="bg-black dark:bg-slate-700 p-4 text-white flex justify-between items-center rounded-t-lg">
-                        <span className="text-start" id="receiver">Chat</span>
+                        <span className="text-start" id="receiver">AI Assisten</span>
                         <div className="relative inline-block text-left">
                             <button className="hover:bg-gray-700 rounded-md p-1" onClick={closeChat}>
                                 <IoMdClose className="text-white" />
@@ -171,7 +153,7 @@ export default function ModalChat() {
                         <input
                             type="text"
                             id="messageInput"
-                            placeholder="Maintenance"
+                            placeholder="Silahkan input pertanyaanmu"
                             className="flex-1 border rounded-full px-4 py-2 focus:outline-none dark:bg-slate-700"
                             onChange={(e) => setInputValue(e.target.value)
                             }
