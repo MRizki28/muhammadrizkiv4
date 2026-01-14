@@ -10,7 +10,6 @@ import huggingApiHandler from "@/services/huggingApi";
 
 export default function ModalChat() {
     const [openChat, setOpenChat] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const [messages, setMessages] = useState([
         {
@@ -81,7 +80,7 @@ export default function ModalChat() {
                 const updatedMessages = prevMessage.slice(0, -1);
                 return [
                     ...updatedMessages,
-                    {   
+                    {
                         id: updatedMessages.length + 1,
                         type: 'bot',
                         message: result
@@ -90,17 +89,6 @@ export default function ModalChat() {
             });
         }, 1000);
     }
-
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     const closeChat = () => {
         setOpenChat(false);
@@ -113,7 +101,6 @@ export default function ModalChat() {
                 className={`fixed p-1 right-[6px] md:right-4 bottom-10 ${openChat ? 'fade-in h-[100%] top-[3px] md:top-auto md:h-fit' : 'hidden'}`}
             >
                 <div className="bg-gray-100 dark:bg-slate-800 rounded-lg shadow-lg flex flex-col max-h-[600px] h-full ">
-                    {/* Header */}
                     <div className="bg-black dark:bg-slate-700 p-4 text-white flex justify-between items-center rounded-t-lg">
                         <span className="text-start" id="receiver">AI Assisten</span>
                         <div className="relative inline-block text-left">
@@ -123,32 +110,38 @@ export default function ModalChat() {
                         </div>
                     </div>
 
-                    {/* Chat Container */}
                     <div className="flex-1 overflow-y-auto p-4">
                         <div className="flex flex-col space-y-2" id="messageContainer">
-                            {messages.map((message, index) => (
-                                <div key={index} className={`flex space-x-3 ${message.type === 'bot' ? 'items-start' : 'justify-end'}`}>
-                                    {message.type === 'bot' && !isMobile && (
-                                        <div>
+                            {messages.map((message) => (
+                                <div
+                                    key={message.id}
+                                    className={`flex ${message.type === "bot" ? "items-start" : "justify-end"
+                                        }`}
+                                >
+                                    {message.type === "bot" && (
+                                        <div className="mr-2 flex-shrink-0">
                                             <Image
                                                 src={Profile}
-                                                alt="profile"
-                                                width={50}
-                                                height={50}
-                                                className="w-12 h-12 object-cover rounded-full"
-                                                placeholder="blur"
-                                                blurDataURL={Profile.blurDataURL}
+                                                alt="bot profile"
+                                                width={40}
+                                                height={40}
+                                                className="rounded-full h-10 w-10 object-cover"
+                                                priority
                                             />
                                         </div>
                                     )}
-                                    <div className={`text-white p-2 rounded-lg max-w-xs ${message.type === 'bot' ? 'bg-gray-600' : 'bg-green-600'}`}>
-                                        <span>{message.message}</span>
+
+                                    <div
+                                        className={`text-white p-2 rounded-lg max-w-xs break-words  ${message.type === "bot" ? "bg-gray-600" : "bg-green-600"
+                                            }`}
+                                    >
+                                        {message.message}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </div>
-                    {/* Input Field */}
+
                     <div className="bg-white dark:bg-slate-700 p-4 flex items-center rounded-b-lg">
                         <input
                             type="text"
